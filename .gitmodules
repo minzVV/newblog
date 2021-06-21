@@ -1,0 +1,3 @@
+[submodule "themes/hexo-theme-amazing"]
+	path = themes/hexo-theme-amazing
+	url = git://github.com/minzVV/hexo-theme-amazing
