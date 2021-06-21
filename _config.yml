@@ -103,5 +103,5 @@ theme: hexo-theme-amazing
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: 'git@github:minzVV/minzVV.github.io.git'
+  repo: 'git@github.com:minzVV/minzVV.github.io.git'
   branch: 'master'
