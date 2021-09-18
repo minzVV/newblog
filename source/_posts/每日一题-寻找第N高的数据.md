@@ -1,5 +1,5 @@
 ---
-title: 每日一题 - 寻找第N高的数据
+title: 寻找表中第N高的数据 - MySQL练习
 date: 2021-05-29 20:41:02
 tags:
     - MySQL练习题
