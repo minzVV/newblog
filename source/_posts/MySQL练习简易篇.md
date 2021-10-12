@@ -508,5 +508,113 @@ group by year;
 ```
 </br>
 
+### MySQL5.7中的排名
+</br>
+
+> MySQL 5.7实现排名(MySQL8.0 中的rank()、row_number())
+
+</br>
+
+[题目]
+
+用户访问表中记录了用户的访问信息，字段有：用户编号、用户类型、访问次数
+
+
+
+```mysql
+#创建表
+create table visits(
+    uid int not null comment "用户编号",
+    utype varchar(10) comment "用户类型",
+    vtimes int comment "访问次数"
+);
+
+#插入数据
+insert into visits(uid,utype,vtimes) 
+values 
+(10,"A",352),(6,"C",209),(7,"C",110),
+(4,"E",101),(2,"B",53),(20,"A",53),
+(11,"C",32),(1,"A",30),(9,"E",29),(8,"B",6);
+
+
+#有相同数不并列排名 - 8.0中的row_number()
+select v.uid,v.utype,v.vtimes,@rank := @rank + 1 as "rank"
+from visits as v,(select @rank :=0 as "rank") t
+order by v.vtimes desc;
+
++-----+-------+--------+------+
+| uid | utype | vtimes | rank |
++-----+-------+--------+------+
+|  10 | A     |    352 |    1 |
+|   6 | C     |    209 |    2 |
+|   7 | C     |    110 |    3 |
+|   4 | E     |    101 |    4 |
+|   2 | B     |     53 |    5 |
+|  20 | A     |     53 |    6 |
+|  11 | C     |     32 |    7 |
+|   1 | A     |     30 |    8 |
+|   9 | E     |     29 |    9 |
+|   8 | B     |      6 |   10 |
++-----+-------+--------+------+
+
+
+#有相同数时同排名，并跳跃排名 - 8.0中的rank()
+select v.uid,v.utype,v.vtimes,@rownum := @rownum + 1 as "rownum",
+(
+    case when @prevtimes = v.vtimes then @rank
+    when @prevtimes := v.vtimes then @rank := @rownum
+    end
+) as "rank"
+from visits as v,(select 
+                  	@rownum := 0 as "rownum",
+                  	@rank := 0 as "rank",
+                  	@prevtimes := NULL as "prevtimes" 
+                 ) t
+order by v.vtimes desc;
+
++-----+-------+--------+--------+------+
+| uid | utype | vtimes | rownum | rank |
++-----+-------+--------+--------+------+
+|  10 | A     |    352 |      1 | 1    |
+|   6 | C     |    209 |      2 | 2    |
+|   7 | C     |    110 |      3 | 3    |
+|   4 | E     |    101 |      4 | 4    |
+|   2 | B     |     53 |      5 | 5    |
+|  20 | A     |     53 |      6 | 5    |
+|  11 | C     |     32 |      7 | 7    |
+|   1 | A     |     30 |      8 | 8    |
+|   9 | E     |     29 |      9 | 9    |
+|   8 | B     |      6 |     10 | 10   |
++-----+-------+--------+--------+------+
+
+
+#有相同数时，连续排名 - 8.0中的dense_rank()
+
+select v.*,
+(case 
+ 	when @prevtimes = v.vtimes then @rank
+	when @prevtimes := v.vtimes then @rank := @rank +1
+ 	end
+) as "rank"
+from visits as v,(select @rank := 0 as "rank",@prevtimes := NULL as "prevtimes") t
+order by v.vtimes desc;
+
++-----+-------+--------+------+
+| uid | utype | vtimes | rank |
++-----+-------+--------+------+
+|  10 | A     |    352 | 1    |
+|   6 | C     |    209 | 2    |
+|   7 | C     |    110 | 3    |
+|   4 | E     |    101 | 4    |
+|   2 | B     |     53 | 5    |
+|  20 | A     |     53 | 5    |
+|  11 | C     |     32 | 6    |
+|   1 | A     |     30 | 7    |
+|   9 | E     |     29 | 8    |
+|   8 | B     |      6 | 9    |
++-----+-------+--------+------+
+```
+
+</br>
 
 持续更新中～
