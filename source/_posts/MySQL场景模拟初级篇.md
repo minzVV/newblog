@@ -501,6 +501,410 @@ where a.score = b.score and b.score = c.score;
 ```
 </br>
 
+### 课程满意度分析
+</br>
+
+**[题目]**
+
+- 满意度记录了教师和学生对课程的满意程度，字段有：教师编号、学生编号、是否满意；
+  - 其中是否满意代表老师和学生对课程的评价，值"是"代表教师和学生都满意
+- 用户表记录了学校教师和学生的信息，字段有：用户编号、是否在系统、角色
+  - 每个用户有唯一的编号
+  - 是否在系统表示 这个用户是否还在这所学校里
+  - 角色表示这个用户是教师还是学生
+- 满意度表中的学生编号、教师编号与用户表的编号联结
+
+现需要分析学校里人员对课程的满意度
+
+</br>
+
+```mysql
+#创建满意度表
+create table satisfaction(
+    tno varchar(10) comment "教师编号",
+    sno varchar(10) comment "学生编号",
+    satisfied varchar(64) comment "是否满意"
+);
+
+#查看表
+desc satisfaction;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| tno       | varchar(10) | YES  |     | NULL    |       |
+| sno       | varchar(10) | YES  |     | NULL    |       |
+| satisfied | varchar(64) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+#插入数据
+insert into satisfaction(tno,sno,satisfied)
+values
+("01","2","学生不满意"),
+("01","1","是"),
+("02","1","老师不满意"),
+("02","2","是"),
+("03","1","是"),
+("03","2","是");
+
+#查看数据
+select * from satisfaction;
++------+------+-----------------+
+| tno  | sno  | satisfied       |
++------+------+-----------------+
+| 01   | 2    | 学生不满意       |
+| 01   | 1    | 是              |
+| 02   | 1    | 老师不满意       |
+| 02   | 2    | 是              |
+| 03   | 1    | 是              |
+| 03   | 2    | 是              |
++------+------+-----------------+
+
+#创建用户表
+create table sch_user(
+    id varchar(10) not null primary key comment "编号",
+    in_not_sys varchar(64) comment "是否在系统中",
+    roles varchar(64) comment "角色"
+);
+
+#查看表
+desc sch_user;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| id         | varchar(10) | NO   | PRI | NULL    |       |
+| in_not_sys | varchar(64) | YES  |     | NULL    |       |
+| roles      | varchar(64) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+#插入数据
+insert into sch_user(id,in_not_sys,roles)
+values
+("1","是","学生"),
+("2","是","学生"),
+("01","是","教师"),
+("02","否","教师"),
+("03","是","教师");
+
+#查看数据
+select * from sch_user;
++----+------------+--------+
+| id | in_not_sys | roles  |
++----+------------+--------+
+| 01 | 是         | 教师   |
+| 02 | 否         | 教师   |
+| 03 | 是         | 教师   |
+| 1  | 是         | 学生   |
+| 2  | 是         | 学生   |
++----+------------+--------+
+```
+
+</br>
+
+[思路]
+
+- 读题：现需要分析**学校里**人员对课程的**满意度**
+- 解题：
+  - 满意度信息在满意度表中，人员信息在用户表中，需要两表联结
+  - 满意度计算：(对课程都满意且在系统中的教师和学生) / (在系统中的所有用户)
+  - 限定条件1：是否在系统 - 是
+  - 限定条件2：满意度 - 是
+  - 找出在系统中的所有id，然后筛选满意度表中的数据，再进行计算
+
+```mysql
+select sum(if(a.satisfied = "是",1,0)) / count(a.satisfied) as "课程满意度"
+from satisfaction as a
+where a.tno in (select id from sch_user where in_not_sys = "是")
+and a.sno in (select id from sch_user where in_not_sys = "是");
+
++-----------------+
+| 课程满意度      |
++-----------------+
+|          0.7500 |
++-----------------+
+```
+
+</br>
+
+### 红包领取情况
+</br>
+
+**[题目]**
+
+- 用户活跃表记录了用户的登录信息，字段有：登录日期、用户ID、新用户
+  - 其中新用户列的值为0、1；值为0为老用户、值为1为新用户
+- 领取红包表里记录了用户领取红包的信息，字段有：抢红包日期、抢红包时间、用户id、金额
+
+
+
+现需要分析以下问题：
+
+- 计算2019年6月1日至今，每天DAU (即活跃用户，定义：有登录的用户)
+- 分析每天领红包的用户数、人均领取金额、人均领取次数，其中还有用户属性以及领取红包未登录的情况
+- 分析每个月按领红包取天数为1、2、3......30、31天区分，计算取每个月领取红包的用户数、人均领取金额、人均领取次数
+- 分析每个月领过红包用户和未领红包用户的数量
+
+</br>
+
+```mysql
+create table dau_users(
+    log_date varchar(64) comment "登录日期",
+    uid int comment "用户id",
+    new_old tinyint comment "新用户"
+);
+
+create table grabred(
+    grab_date varchar(64) comment "抢红包日期",
+    grab_time datetime comment "抢红包时间",
+    uid int comment "用户id",
+    amount float comment "金额"
+);
+
+```
+
+</br>
+
+**[解题1]**
+
+- 读题：计算**2019年6月1日至今**，**每天**DAU (即活跃用户，定义：**有登录的用户**)
+- 解题
+  - 2019年6月1日到今天，限定条件为登录日期 >= 2019年6月1日
+  - 统计每天的登录用户
+
+```mysql
+select log_date,count(uid) as "DAU-活跃用户"
+from dau_users
+where log_date >= "20190601"
+group by log_date;
+```
+
+</br>
+
+**[解题2]**
+
+- 读题：分析**每天**领红包的**用户数**、**人均**领取**金额**、**人均**领取**次数**，其中还有用户属性以及领取红包未登录的情况
+- 解题
+  - 每天领红包的用户分为三种：新用户、老用户以及领取红包但是未登录的用户，而新用户、老用户的数据统计在用户活跃表中，领取红包但是未登录的用户需要用两表进行联结比对
+  - 人均领取金额 = 领红包总金额 / 领红包总人数 (去重用户数)
+  - 人均领取次数 = 总领取次数 / 领红包总人数 (去重用户数)
+
+
+
+```mysql
+select c.grabdate,
+count(distinct case when c.new_or_old = "新用户" then uid else null end) as "日领新用户数",
+count(distinct case when c.new_or_old = "老用户" then uid else null end) as "日领老用户数",
+count(distinct case when c.new_or_old = "未登录用户" then uid else null end) as "日领未登录用户数",
+sum(c.amount)/ count(distinct c.uid) as "人均领取金额",
+count(*)/ count(distinct c.uid) as "人均领取次数"
+from
+(select b.grabdate,b.uid,b.amount,
+(
+    case when a.new_old = 1 then "新用户",
+ 		 when a.new_old = 0 then "老用户",
+    	 else "未登录用户"
+end) as new_or_old
+from dau_users as a right join grabred as b
+on a.log_date = b.grabdate and a.uid = b.uid) as c
+group by c.grabdate;
+```
+
+</br>
+
+**[解题3]**
+
+- 读题：分析**每个月**按领红包取天数为1、2、3......30、31天区分，计算取每个月领取红包的**用户数**、**人均**领取**金额**、**人均**领取**次数**
+- 解题：
+  - 按照月份进行分组，然后统计该月有多少天有领红包行为，因为领红包日期为字符串格式，所以选用领红包时间列使用month()函数进行分组
+  - 统计分组后每个月有多少用户领取红包，需要distinct
+  - 人均领取金额 = 该月份领取红包总金额 / 该月份领取红包用户数 (distinct)
+  - 人均领取次数 = 该月份总领取红包次数 / 该月份领取红包用户数 (distinct)
+
+
+
+```mysql
+select month(g.grab_time) as "月份",
+count(distinct g.grab_time) as "领取天数"
+count(distinct uid) as "用户数",
+sum(g.amount) / count(distinct uid) as "人均领取金额",
+count(*) / count(distinct uid) as "人均领取次数"
+from grabred as g
+group by month(g.grab_time);
+
+
+#小问题1：这样显示月份并不准确，month()筛选分组后显示的只是月份，即03、04,如果有年份的区别，例如2019、2018这样的就会使数据不明确
+#解决：1、再取出年份进行拼接concat() ；2、直接用领红包日期来分组，因为是字符串，所以使用转换格式，然后在month()，或者截取前6个数字进行分组，这需要数据录入的格式以及准确性保持很高的要求
+
+```
+
+</br>
+
+[解题4]
+
+- 读题：分析**每个月** **领过**红包用户和**未领**红包用户的数量
+- 解题：
+  - 每个月，即按照月份来分组，month()
+  - 领过红包用户信息存在领红包表中，而未领红包用户存在用户活跃表中，需要两表联结进行比对，用户活跃表作为 left join 的左表
+  - 未领取红包用户 = 活跃用户 - 领红包用户
+
+</br>
+
+```mysql
+select month(c.grab_time),
+sum(case when 是否领过红包 = "领过红包用户" then 1 else 0 end) as "领过红包用户数",
+sum(case when 是否领过红包 = "未领过红包用户" then 1 else 0 end) as "未领过红包用户数"
+from
+(select b.grab_time,a.uid,b.uid as "领红包用户id",
+ (
+     case when b.uid is not null then "领过红包用户"
+     else "未领过红包用户"
+ end) as "是否领过红包"
+from dau_users as a 
+left join grabred as b 
+on a.log_date = b.grab_date and a.uid = b.uid) as c
+group by month(c.grab_time);
+
+#注意点
+#1、还是跟问题3一样的月份函数的使用列问题；2、要注意联结后的列名在之后的语句中使用，即使用时要准确无误的引用
+```
+
+</br>
+
+### 登录统计排序
+</br>
+
+**[题目]**
+
+用户登录时间表中记录了用户登录的信息，字段有：用户id、姓名、邮箱、最后登录时间
+
+现需要输出一张表，字段为：姓名、最后登录时间、登录时间排名、登录天数排名
+
+- 登录时间排名：按时间给出每个人的登录次数，登录时间最早为1，依次排下去
+- 登录天数排名：按天给出每个人的登录次数，同一天多次登录设定为同一次，最多天数标记为1，之后依次类推
+
+</br>
+
+```mysql
+#创建表
+create table user_loginfo(
+    uid int not null comment "用户id",
+    name varchar(64) comment "姓名",
+    email_addr varchar(64) comment "邮箱地址",
+    last_logtime datetime comment "最后登录时间"
+);
+
+#查看数据表
+desc user_loginfo;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| uid          | int(11)     | NO   |     | NULL    |       |
+| name         | varchar(64) | YES  |     | NULL    |       |
+| email_addr   | varchar(64) | YES  |     | NULL    |       |
+| last_logtime | datetime    | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+#插入数据
+insert into user_loginfo(uid,name,email_addr,last_logtime)
+values 
+(100,"test4","test4@163.com","2007/11/25 16:31"),
+(13,"test1","test1@163.com","2007/3/22 16:27"),
+(19,"test1","test1@163.com","2007/10/25 14:13"),
+(42,"test1","test1@163.com","2007/10/25 14:20"),
+(45,"test2","test2@163.com","2007/4/25 14:17"),
+(49,"test2","test2@163.com","2007/5/25 14:22");
+
+#查看数据
+select * from user_loginfo;
++-----+-------+---------------+---------------------+
+| uid | name  | email_addr    | last_logtime        |
++-----+-------+---------------+---------------------+
+| 100 | test4 | test4@163.com | 2007-11-25 16:31:00 |
+|  13 | test1 | test1@163.com | 2007-03-22 16:27:00 |
+|  19 | test1 | test1@163.com | 2007-10-25 14:13:00 |
+|  42 | test1 | test1@163.com | 2007-10-25 14:20:00 |
+|  45 | test2 | test2@163.com | 2007-04-25 14:17:00 |
+|  49 | test2 | test2@163.com | 2007-05-25 14:22:00 |
++-----+-------+---------------+---------------------+
+```
+
+</br>
+
+**[思路]**
+
+- 读题：现需要输出一张表，字段为：**姓名**、**最后登录时间**、**登录时间排名**、**登录天数排名**
+
+  - 登录时间排名：**按时间**给出每个人的**登录次数**，登录时间**最早为1**，依次排下去
+  - 登录天数排名：**按天**给出每个人的登录次数，同一天**多次登录设定为同一次**，最**多天数标记为1**，之后依次类推
+
+- 解题(与出题者给出的答案理解不同，出于我自设定的业务场景)：
+
+  - 我觉得应该需要给出以下这样的列表
+
+    | 姓名  | 最后登录时间        | 最早登录时间        | 登录时间排名 | 登录天数 | 登录天数排名 |
+    | ----- | ------------------- | ------------------- | ------------ | -------- | ------------ |
+    | test1 | 2007-05-25 14:22:00 | 2007-02-25 14:17:00 | 1            | 2        | 1            |
+    | test2 | 2007-10-25 14:20:00 | 2007-03-22 16:27:00 | 2            | 2        | 1            |
+    | test4 | 2007-11-25 16:31:00 | 2007-11-25 16:31:00 | 3            | 1        | 2            |
+
+  - 下面语句分开的原因是：这种方式语句需要对要进行排名的列进行先排序，而同时对两列进行排列，会影响第二列的排名不准确，暂时不知道如何处理
+
+</br>
+
+```mysql
+select a.name,a.最后登录时间,a.最早登录时间,
+(case
+ 	when @predate = a.最早登录时间 then @rank
+    when @predate := a.最早登录时间 then @rank := @rank + 1
+ 	end
+) as "登录时间排名"
+from
+(select name,max(last_logtime) as "最后登录时间",min(last_logtime) as "最早登录时间"
+from user_loginfo
+group by name) as a,
+(select @rank := 0 as "rank",@predate := NULL as "predate") as t
+order by a.最早登录时间
+;
+
++-------+---------------------+---------------------+--------------------+
+| name  | 最后登录时间          | 最早登录时间          | 登录时间排名         |
++-------+---------------------+---------------------+--------------------+
+| test2 | 2007-05-25 14:22:00 | 2007-02-25 14:17:00 |                  1 |
+| test1 | 2007-10-25 14:20:00 | 2007-03-22 16:27:00 |                  2 |
+| test4 | 2007-11-25 16:31:00 | 2007-11-25 16:31:00 |                  3 |
++-------+---------------------+---------------------+--------------------+
+
+
+select a.name,a.最后登录时间,a.登录天数,
+(case
+ 	when @predate = a.登录天数 then @rank
+    when @predate := a.登录天数 then @rank := @rank + 1
+ 	end
+) as "登录天数排名"
+from
+(select name,max(last_logtime) as "最后登录时间",
+ count(distinct date(last_logtime)) as "登录天数"
+from user_loginfo
+group by name) as a,
+(select @rank := 0 as "rank",@pretimes := NULL as "pretimes") as t
+order by a.登录天数 desc
+;
+
++-------+---------------------+--------------+--------------------+
+| name  | 最后登录时间          | 登录天数      | 登录天数排名         |
++-------+---------------------+--------------+--------------------+
+| test1 | 2007-10-25 14:20:00 |            2 |                  1 |
+| test2 | 2007-05-25 14:22:00 |            2 |                  1 |
+| test4 | 2007-11-25 16:31:00 |            1 |                  2 |
++-------+---------------------+--------------+--------------------+
+```
+
+</br>
+
+
+
+
+
+
 
 **持续更新中～**
 
