@@ -23,7 +23,7 @@ MySQL练习题，一些常用的基础知识点的练习..
 
 编写一个SQL查询，查找学生表中所有重复的学生名。
 
-```mysql
+```SQL
 # 建表
 
 create table exerciseOne(
@@ -66,7 +66,7 @@ select * from exerciseOne;
 
 
 
-```mysql
+```SQL
 
 select name from exerciseOne group by name having count(name) > 1;
 
@@ -90,7 +90,7 @@ exercise2 表中，记录了学生选修课程的名称以及成绩
 
 找出语文课中成绩第二高的学生成绩，如果不存在第二高成绩的学生，那么查询应返回 null 。
 
-```mysql
+```SQL
 # 建表
 
 create table exercise2(
@@ -140,7 +140,7 @@ select * from exercise2;
   - 进行排序并选择第二高成绩
   - 特殊情况：如果不存在第二高的成绩，返回null
 
-```mysql
+```SQL
 
 select ifnull((
 	select distinct score from exercise2 where course = "语文"
@@ -157,7 +157,7 @@ select ifnull((
 
 
 
-```mysql
+```SQL
 # 验证特殊情况
 
 insert into exercise2(id,course,score) values (1,"英语",77),(2,"英语",77);
@@ -205,7 +205,7 @@ select ifnull((
 
 
 
-```mysql
+```SQL
 # 建学生表
 
 create table student_lx3(
@@ -301,7 +301,7 @@ select * from score_lx3;
 
 
 
-```mysql
+```SQL
 select a.id,a.name,b.course,b.score 
 from student_lx3 as a left join score_lx3 as b 
 on a.id = b.id;
@@ -333,7 +333,7 @@ on a.id = b.id;
 
 现在需要找出不是近视的学生都有哪些？
 
-```mysql
+```SQL
 #建学生表
 
 create table student_lx4(
@@ -410,7 +410,7 @@ select * from jinshi;
 
 
 
-```mysql
+```SQL
 select st.id,st.name
 from student_lx4 as st left join jinshi as js 
 on st.id = js.s_id
@@ -434,7 +434,7 @@ cook表记录了三个字段，分别是年、月、值
 
 现需要进行行列转换为：年、m1、m2、m3、m4
 
-```mysql
+```SQL
 #创建表
 create table cook(
     year int comment "年",
@@ -489,7 +489,7 @@ select * from cook;
   - 用case when将原先月这列进行赋值转换，值为原先的"值"一列，并生成新的m1、m2、m3、m4列
   - 去除为0的项，可以直接使用max函数，前提是原先"值"该列类型为数值
 
-```mysql
+```SQL
 select year,
 max(case when month = "1" then price else 0 end) as "m1",
 max(case when month = "2" then price else 0 end) as "m2",
@@ -521,7 +521,7 @@ group by year;
 
 
 
-```mysql
+```SQL
 #创建表
 create table visits(
     uid int not null comment "用户编号",

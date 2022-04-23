@@ -32,7 +32,7 @@ categories:
 >
 > #实例
 >
-> ```mysql
+> ```SQL
 > CREATE DATABASE cnt_exp CHARSET utf8mb4;
 > USE cnt_exp;
 > CREATE TABLE stu(
@@ -139,7 +139,7 @@ SELECT -> DISTINCT -> FROM -> JOIN -> ON -> WHERE -> GROUP BY -> HAVING -> ORDER
 
 #### 创建数据
 
-```mysql
+```SQL
 CREATE TABLE customers(
     c_id VARCHAR(10),
     city VARCHAR(10) NOT NULL,
@@ -188,7 +188,7 @@ SELECT * FROM orders;
 
 - 解答
 
-  ```mysql
+  ```SQL
   SELECT customers.c_id,COUNT(order_id) AS total_orders
   FROM customers 
   LEFT JOIN orders 
@@ -219,7 +219,7 @@ SELECT * FROM orders;
 
 虚拟表VT1
 
-```mysql
+```SQL
 SELECT * FROM customers JOIN orders;
 
 +-------+----------+----------+------+
@@ -268,7 +268,7 @@ SELECT * FROM customers JOIN orders;
 
 虚拟表VT2
 
-```mysql
+```SQL
 SELECT * FROM customers JOIN orders ON customers.c_id = orders.c_id;
 +------+----------+----------+------+
 | c_id | city     | order_id | c_id |
@@ -298,7 +298,7 @@ SELECT * FROM customers JOIN orders ON customers.c_id = orders.c_id;
 
 虚拟表VT3
 
-```mysql
+```SQL
 SELECT * FROM customers LEFT JOIN orders on customers.c_id = orders.c_id;
 
 +-------+----------+----------+------+
@@ -324,7 +324,7 @@ SELECT * FROM customers LEFT JOIN orders on customers.c_id = orders.c_id;
 
 虚拟表VT4
 
-```mysql
+```SQL
 
 SELECT * FROM customers LEFT JOIN orders on customers.c_id = orders.c_id
 WHERE customers.city = 'HangZhou';
@@ -356,7 +356,7 @@ WHERE customers.city = 'HangZhou';
 
 虚拟表VT5
 
-```mysql
+```SQL
 SELECT * FROM customers LEFT JOIN orders on customers.c_id = orders.c_id 
 WHERE customers.city = 'HangZhou' 
 GROUP BY customers.c_id;
@@ -383,7 +383,7 @@ GROUP BY customers.c_id;
 
 虚拟表VT6
 
-```mysql
+```SQL
 SELECT * FROM customers LEFT JOIN orders on customers.c_id = orders.c_id 
 WHERE customers.city = 'HangZhou' 
 GROUP BY customers.c_id
@@ -407,7 +407,7 @@ HAVING COUNT(orders.order_id) < 2;
 
 虚拟表VT7
 
-```mysql
+```SQL
 SELECT customers.c_id,COUNT(order_id) AS total_orders
 FROM customers LEFT JOIN orders on customers.c_id = orders.c_id 
 WHERE customers.city = 'HangZhou' 
@@ -434,7 +434,7 @@ HAVING COUNT(orders.order_id) < 2;
 
 虚拟表VT8
 
-```mysql
+```SQL
 SELECT customers.c_id,COUNT(order_id) AS total_orders 
 FROM customers LEFT JOIN orders on customers.c_id = orders.c_id 
 WHERE customers.city = 'HangZhou'  

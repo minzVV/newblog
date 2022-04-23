@@ -67,7 +67,7 @@ categories:
 ### **创建数据**
 </br>
 
-```mysql
+```SQL
 #创建表
 CREATE TABLE userinfo(
     uid varchar(10) not null comment "用户ID",
@@ -218,7 +218,7 @@ select * from userinfo limit 10;
   - 3日留存率定义：3日留存用户数 / 该用户第一天登录日期的活跃用户数
   - 7日留存率定义：7日留存用户数 / 该用户第一天登录日期的活跃用户数
 
-```mysql
+```SQL
 select login_date,count(distinct uid) as "活跃用户数" 
 from userinfo 
 where app_name = "相机"

@@ -35,7 +35,7 @@ MySQL练习题，基于不同的场景模拟进一步加强MySQl知识点练习�
 
 
 
-```mysql
+```SQL
 #建雇员表
 
 create table employees( 
@@ -128,7 +128,7 @@ select * from salary;
 
 
 
-```mysql
+```SQL
 
 select a.id,(a.pay - b.pay) as "薪水涨幅" 
 from 
@@ -166,7 +166,7 @@ join
 
 现在需要找出所有比前一天(昨天)营业额更高的数据
 
-```mysql
+```SQL
 #创建表
 
 create table daysale(
@@ -225,7 +225,7 @@ select * from daysale;
 
 
 
-```mysql
+```SQL
 #datediff
 
 select b.* 
@@ -278,7 +278,7 @@ where b.turnover > a.turnover;
 
 
 
-```mysql
+```SQL
 #创建学生表
 
 create table stu_07(
@@ -379,7 +379,7 @@ select * from score_07;
   - 限定条件2：专业 - 计算机
   - 限定条件3：年龄最小的3位同学，根据年龄进行倒序排列，limit输出前3行
 
-```mysql
+```SQL
 select name,age
 from stu_07
 where year(entrancedate) = 2017
@@ -405,7 +405,7 @@ limit 3;
   - 统计每个班，则需要按照班级来分组，班级信息在学生表，而平均分信息在临时表，需要两表进行join
   - 输出为人数、人数占比，使用case when 进行统计平均分大于80的人数，以及后续的计算占比
 
-```mysql
+```SQL
 select 
 sum(case when 平均成绩 > 80 then 1 else 0 end) as "人数",
 sum(case when 平均成绩 > 80 then 1 else 0 end)/count(st.id) as "人数占比"
@@ -436,7 +436,7 @@ group by st.class;
 
 先需要查找出所有至少连续出现3次的分数
 
-```mysql
+```SQL
 #创建表
 create table score_09(
     id int not null comment "学号",
@@ -487,7 +487,7 @@ select * from score_09;
   - 连续出现3次，意思就是学号a的成绩=学号a+1的成绩=学号a+2的成绩，说明需要自join3次
   - 输出为这个至少出现3次的成绩是多少，distinct去除重复
 
-```mysql
+```SQL
 select distinct a.score
 from score_09 as a join score_09 as b join score_09 as c
 on a.id = b.id - 1 and b.id = c.id - 1
@@ -518,7 +518,7 @@ where a.score = b.score and b.score = c.score;
 
 </br>
 
-```mysql
+```SQL
 #创建满意度表
 create table satisfaction(
     tno varchar(10) comment "教师编号",
@@ -610,7 +610,7 @@ select * from sch_user;
   - 限定条件2：满意度 - 是
   - 找出在系统中的所有id，然后筛选满意度表中的数据，再进行计算
 
-```mysql
+```SQL
 select sum(if(a.satisfied = "是",1,0)) / count(a.satisfied) as "课程满意度"
 from satisfaction as a
 where a.tno in (select id from sch_user where in_not_sys = "是")
@@ -645,7 +645,7 @@ and a.sno in (select id from sch_user where in_not_sys = "是");
 
 </br>
 
-```mysql
+```SQL
 create table dau_users(
     log_date varchar(64) comment "登录日期",
     uid int comment "用户id",
@@ -670,7 +670,7 @@ create table grabred(
   - 2019年6月1日到今天，限定条件为登录日期 >= 2019年6月1日
   - 统计每天的登录用户
 
-```mysql
+```SQL
 select log_date,count(uid) as "DAU-活跃用户"
 from dau_users
 where log_date >= "20190601"
@@ -689,7 +689,7 @@ group by log_date;
 
 
 
-```mysql
+```SQL
 select c.grabdate,
 count(distinct case when c.new_or_old = "新用户" then uid else null end) as "日领新用户数",
 count(distinct case when c.new_or_old = "老用户" then uid else null end) as "日领老用户数",
@@ -721,7 +721,7 @@ group by c.grabdate;
 
 
 
-```mysql
+```SQL
 select month(g.grab_time) as "月份",
 count(distinct g.grab_time) as "领取天数"
 count(distinct uid) as "用户数",
@@ -748,7 +748,7 @@ group by month(g.grab_time);
 
 </br>
 
-```mysql
+```SQL
 select month(c.grab_time),
 sum(case when 是否领过红包 = "领过红包用户" then 1 else 0 end) as "领过红包用户数",
 sum(case when 是否领过红包 = "未领过红包用户" then 1 else 0 end) as "未领过红包用户数"
@@ -783,7 +783,7 @@ group by month(c.grab_time);
 
 </br>
 
-```mysql
+```SQL
 #创建表
 create table user_loginfo(
     uid int not null comment "用户id",
@@ -850,7 +850,7 @@ select * from user_loginfo;
 
 </br>
 
-```mysql
+```SQL
 select a.name,a.最后登录时间,a.最早登录时间,
 (case
  	when @predate = a.最早登录时间 then @rank
