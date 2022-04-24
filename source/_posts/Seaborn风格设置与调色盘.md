@@ -53,7 +53,7 @@ def sinplot(flip = 1):
 sinplot()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/2_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/2_0.png)
 
 ### set
 
@@ -68,7 +68,7 @@ sinplot()
 plt.grid(linestyle = '--')
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/3_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/3_0.png)
 
 ### set_style
 
@@ -95,7 +95,7 @@ sinplot()
 
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/4_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/4_0.png)
 
 ### despine
 
@@ -139,7 +139,7 @@ sns.boxplot(data = data,palette='deep')
 <matplotlib.axes._subplots.AxesSubplot at 0xeddb830>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/5_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/5_2.png)
 
 ### axes_style
 
@@ -162,7 +162,7 @@ sinplot()
 
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/6_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/6_0.png)
 
 ### set_context
 
@@ -177,7 +177,7 @@ sns.set_context('talk')
 sinplot()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/7_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/7_0.png)
 
 ## 调色盘
 
@@ -203,7 +203,7 @@ sns.palplot(current_palette)
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_2_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_2_0.png)
 
 
 
@@ -217,7 +217,7 @@ sns.palplot(sns.color_palette('hls',8))
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_3_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_3_0.png)
 
 ```python
 # 分组颜色设置 - 'Paired'
@@ -226,7 +226,7 @@ sns.palplot(sns.color_palette('Paired',8))
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_4_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_4_0.png)
 
 ### husl_palette
 
@@ -243,7 +243,7 @@ sns.palplot(sns.hls_palette(8,l = .7,s =1))
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_5_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_5_0.png)
 
 ### cubehelix_palette
 
@@ -268,15 +268,15 @@ sns.palplot(sns.cubehelix_palette(8,start = 2,rot = 0,dark = 0,light = .95,rever
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_6_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_6_0.png)
 
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_6_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_6_1.png)
 
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_6_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_6_2.png)
 
 ### dark_palette / light_palette
 
@@ -308,13 +308,13 @@ sns.palplot(sns.color_palette('Greens_r'))
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_7_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_7_0.png)
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_7_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_7_1.png)
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_7_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_7_2.png)
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_7_3.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_7_3.png)
 
 ### diverging_palette
 
@@ -338,7 +338,7 @@ sns.palplot(sns.diverging_palette(145,280,s = 85,l = 25,n = 7))
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_8_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_8_0.png)
 
 ### 应用
 
@@ -359,7 +359,7 @@ sns.heatmap(x,cmap=cmap)
     <matplotlib.axes._subplots.AxesSubplot at 0x5b28c50>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_9_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_9_1.png)
 
 #### 风格演示
 
@@ -376,7 +376,7 @@ sinplot()
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-1/output_11_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-1/output_11_0.png)
 
 ## 总结
 

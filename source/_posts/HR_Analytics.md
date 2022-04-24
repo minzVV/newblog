@@ -117,7 +117,7 @@ plt.xticks(rotation = 30)
     (array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), <a list of 10 Text xticklabel objects>)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-1.png)
 
 > 部门名称：sales（销售）、technical（技术）、support（支持）、IT、product_mng（产品经理）、marketing（市场营销）、RandD（研发）、accounting（会计）、hr、management（管理）
 
@@ -138,7 +138,7 @@ plt.xticks(rotation = 30)
     (array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), <a list of 10 Text xticklabel objects>)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-2.png)
 
 **图表解析**：销售sales的工资基本处于低中水平，可能是导致离职率较高的因素；而管理层的薪资基本都在中高水平，离职率也最低
 
@@ -157,7 +157,7 @@ plt.xticks(rotation = 30)
     (array([0, 1, 2]), <a list of 3 Text xticklabel objects>)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-3.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-3.png)
 
 **图表解析**：很直观的看出，离职的员工大多数薪资都在低到中等的水平，而很少有高薪资的员工离开公司
 
@@ -177,7 +177,7 @@ plt.xticks(rotation = 360)
     (array([0, 1]), <a list of 2 Text xticklabel objects>)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-4.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-4.png)
 
 **图表解析**：明显得知，离职员工中几乎都没有得到过升职，而得到升职的员工基本都没有离开
 
@@ -198,7 +198,7 @@ plt.xticks(rotation = 360)
     (array([0, 1, 2, 3, 4, 5]), <a list of 6 Text xticklabel objects>)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-5.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-5.png)
 
 **图表解析**：超过一半的员工只有2个项目就离开了公司；同样有从4-7个项目统计的员工离职，并且随着项目的增多，员工离职率逐渐增高；3个项目的员工离职率最低
 
@@ -221,7 +221,7 @@ plt.xticks(rotation = 360)
     (array([0, 1, 2, 3, 4, 5, 6, 7]), <a list of 8 Text xticklabel objects>)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-6.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-6.png)
 
 **图表解析**：离职员工在离职前大多数在公司已经工作3-5年；在公司工作7年及以上几乎没有人离职；在公司工作2年的员工基本上也不会选择离职
 
@@ -241,7 +241,7 @@ sns.kdeplot(data.loc[(data['left'] == 1),'average_montly_hours'],color = 'r',sha
     <matplotlib.axes._subplots.AxesSubplot at 0x1a23732d68>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-7.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-7.png)
 
 **图表解析**：就离职部分员工来说，很明显的双峰分布，说明员工每月平均工作时长低于150小时和工作时长高与250小时的员工离职率最高。
 
@@ -263,7 +263,7 @@ sns.kdeplot(data.loc[(data['left'] == 1),'last_evaluation'],color = 'r',shade = 
     <matplotlib.axes._subplots.AxesSubplot at 0x1a2393ecf8>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-8.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-8.png)
 
 **图表解析** ：也是一个双峰分布：表现糟糕的和表现优秀的员工出现了离职的两个峰值。有可能是绩效评估出色的员工，公司没有相应的转换到升职和加薪上，导致了表现优秀的员工离职率变高；而绩效评估在0.6~0.8之间员工有较高的留存率
 
@@ -282,7 +282,7 @@ sns.kdeplot(data.loc[(data['left'] == 1),'satisfaction_level'],color = 'r',shade
     <matplotlib.axes._subplots.AxesSubplot at 0x1a2393e0b8>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-9.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-9.png)
 
 **图表解析**：
 
@@ -309,7 +309,7 @@ pd.plotting.scatter_matrix(df[['satisfaction_level','last_evaluation']],
           dtype=object)
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/HR/hr-10.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/HR/hr-10.png)
 
 
 

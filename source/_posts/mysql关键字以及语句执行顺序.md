@@ -290,7 +290,7 @@ SELECT * FROM customers JOIN orders ON customers.c_id = orders.c_id;
 
 图SQL_JOINS
 
-![](https://gitee.com/minzvv/blog_images/raw/master/sql-join.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/sql-join.png)
 
 </br>
 

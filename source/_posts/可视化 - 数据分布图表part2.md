@@ -70,7 +70,7 @@ sns.jointplot(x = df['a'],y = df['b'],
     <seaborn.axisgrid.JointGrid at 0x5759510>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_2_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_2_2.png)
 
 ### 六边形图 / 蜂窝图
 
@@ -85,7 +85,7 @@ with sns.axes_style('white'):
                  marginal_kws = dict(bins = 20))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_3_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_3_1.png)
 
 ### 密度图 + 散点图
 
@@ -106,7 +106,7 @@ g.plot_joint(plt.scatter,c = 'w', s = 30,linewidth = 1,marker = '+')
     <seaborn.axisgrid.JointGrid at 0x1431ec90>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_4_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_4_1.png)
 
 ### 综合散点图
 
@@ -133,7 +133,7 @@ g.annotate(stats.pearsonr)
 plt.grid(linestyle = '--')
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_5_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_5_2.png)
 
 ### 拆分绘制 - 散点图
 
@@ -156,7 +156,7 @@ g.plot_marginals(sns.distplot,kde = True,color = 'g')
     <seaborn.axisgrid.JointGrid at 0x154c0690>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_6_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_6_2.png)
 
 ### 拆分绘制 - 密度图
 
@@ -180,7 +180,7 @@ g.plot_marginals(sns.kdeplot,shade = True,color = 'r')
     <seaborn.axisgrid.JointGrid at 0x154b13b0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_7_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_7_1.png)
 
 ### 矩阵散点图
 
@@ -226,7 +226,7 @@ sns.pairplot(iris,
     <seaborn.axisgrid.PairGrid at 0x15511310>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_8_3.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_8_3.png)
 
 #### 局部变量对比
 
@@ -241,7 +241,7 @@ sns.pairplot(iris,vars = ['sepal_width','sepal_length'],
     <seaborn.axisgrid.PairGrid at 0x1d94b510>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_9_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_9_2.png)
 
 #### 多类显示
 
@@ -256,7 +256,7 @@ sns.pairplot(iris , diag_kind = 'kde',markers = '+',
     <seaborn.axisgrid.PairGrid at 0x14feffb0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_10_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_10_2.png)
 
 ### 拆分绘制 - 散点图2
 
@@ -286,7 +286,7 @@ g.add_legend()
     <seaborn.axisgrid.PairGrid at 0x21652e90>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_11_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_11_2.png)
 
 
 
@@ -327,7 +327,7 @@ sns.stripplot(x = 'day',
     <matplotlib.axes._subplots.AxesSubplot at 0xc12130>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_14_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_14_2.png)
 
 #### 二次分类
 
@@ -342,7 +342,7 @@ sns.stripplot(x = 'sex',y = 'total_bill',hue = 'day',
     <matplotlib.axes._subplots.AxesSubplot at 0xf54fed0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_15_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_15_1.png)
 
 #### 二次拆分
 
@@ -364,7 +364,7 @@ sns.stripplot(x = 'sex',y = 'total_bill',hue = 'day',
     <matplotlib.axes._subplots.AxesSubplot at 0xf5524d0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_16_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_16_1.png)
 
 #### 二次筛选
 
@@ -387,7 +387,7 @@ sns.stripplot(x = 'total_bill',y = 'day',data = tips,jitter = True,
     <matplotlib.axes._subplots.AxesSubplot at 0xb840b0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_17_2.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_17_2.png)
 
 ### 分簇散点图
 
@@ -403,7 +403,7 @@ sns.swarmplot(x = 'day',y = 'total_bill',data = tips,
     <matplotlib.axes._subplots.AxesSubplot at 0xa53c70>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/output_18_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/output_18_1.png)
 
 ## 箱型图
 
@@ -445,7 +445,7 @@ sns.boxplot(x = 'day',y = 'total_bill',data = tips,
 <matplotlib.axes._subplots.AxesSubplot at 0x614e2b0>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/2_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/2_1.png)
 
 ### 二次分类
 
@@ -461,7 +461,7 @@ sns.boxplot(x = 'day',y = 'total_bill',data = tips,hue = 'sex',palette = 'Reds')
 <matplotlib.axes._subplots.AxesSubplot at 0x62316f0>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/3_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/3_1.png)
 
 
 
@@ -502,7 +502,7 @@ sns.violinplot(x = 'day',y = 'total_bill',data = tips,
 <matplotlib.axes._subplots.AxesSubplot at 0x10c7eab0>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/4_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/4_1.png)
 
 ### 二次分类
 
@@ -521,7 +521,7 @@ sns.violinplot(x = 'day',y = 'total_bill',data = tips,
 <matplotlib.axes._subplots.AxesSubplot at 0x110572d0>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/5_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/5_1.png)
 
 ### 混合图表
 
@@ -539,7 +539,7 @@ sns.swarmplot(x = 'day',y = 'total_bill',data = tips,color = 'w',alpha = 0.5)
 <matplotlib.axes._subplots.AxesSubplot at 0x11224ed0>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/6_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/6_1.png)
 
 ## LV图表
 
@@ -566,7 +566,7 @@ sns.swarmplot(x = 'day',y = 'total_bill',data = tips,color = 'k',size = 6,alpha 
 <matplotlib.axes._subplots.AxesSubplot at 0x11263f30>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-2/7_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-2/7_1.png)
 
 ## 写在最后
 

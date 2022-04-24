@@ -82,7 +82,7 @@ plt.legend()
     <matplotlib.legend.Legend at 0xf049090>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/output_3_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/output_3_1.png)
 
 ### 绘制直方图-2
 
@@ -105,7 +105,7 @@ sns.distplot(s,rug = True,
     <matplotlib.axes._subplots.AxesSubplot at 0xf4fc9f0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/output_4_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/output_4_1.png)
 
 ## 密度图
 
@@ -142,7 +142,7 @@ sns.rugplot(s,height = 0.1,color = 'k',alpha = 0.6)
     <matplotlib.axes._subplots.AxesSubplot at 0xca6b90>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/output_5_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/output_5_1.png)
 
 ### 多样本密度图-1
 
@@ -180,7 +180,7 @@ sns.rugplot(df['b'],color = 'r',axis = 'y',alpha = 0.5)
     <matplotlib.axes._subplots.AxesSubplot at 0x10bf0170>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/output_6_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/output_6_1.png)
 
 ### 多样本密度图-2
 
@@ -205,7 +205,7 @@ sns.kdeplot(df2['a'],df2['b'],cmap = 'Blues',shade = True,
     <matplotlib.axes._subplots.AxesSubplot at 0x11147bf0>
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/output_7_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/output_7_1.png)
 
 ## 柱状图
 
@@ -243,9 +243,9 @@ sns.barplot(x = 'sex',y = 'survived',hue = 'class',data = titanic,
 titanic.head()
 ```
 
-![bg-1](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/bg-1.png)
+![bg-1](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/bg-1.png)
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/2_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/2_1.png)
 
 ### 柱状图拆分
 
@@ -260,9 +260,9 @@ sns.barplot(x = 'day',y = 'total_bill',hue = 'sex',data = tips,
 tips.groupby(['day','sex']).mean()
 ```
 
-![bg-2](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/bg-2.png)
+![bg-2](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/bg-2.png)
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/3_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/3_1.png)
 
 ### 实例应用
 
@@ -301,7 +301,7 @@ sns.despine(left = True,bottom = True)
 17      137.13     KY  
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/4_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/4_1.png)
 
 ### 计数柱状图
 
@@ -321,7 +321,7 @@ sns.countplot(y = 'class',hue = 'who',data = titanic,palette='magma')
 <matplotlib.axes._subplots.AxesSubplot at 0x15dc5cb0>
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/5_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/5_1.png)
 
 ### 折线图
 
@@ -348,7 +348,7 @@ Dinner  Yes       21.859429
 Name: total_bill, dtype: float64
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/seaborn-2-1/6_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/seaborn-2-1/6_1.png)
 
 ## 总结
 

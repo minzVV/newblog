@@ -418,7 +418,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_15_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_15_0.png)
 
 **图表解析**：四个折线图趋势基本一致，呈现为前3个月销量极高，销售额暴涨，往后骤然下降，最后趋于平稳。
 
@@ -690,7 +690,7 @@ group_user.describe()
 group_user.query('订单金额 < 4000').plot.scatter(x = '订单金额',y = '订单数',figsize = (20,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_21_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_21_1.png)
 
 **图表解析**：由于数据源是CD网站的销售数据，商品种类单一，金额和商品量呈线性，并不存在大量离群点。
 
@@ -702,7 +702,7 @@ group_user.query('订单金额 < 4000').plot.scatter(x = '订单金额',y = '订
 data.plot.scatter(x = '订单金额',y = '订单数',figsize = (20,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_22_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_22_1.png)
 
 **图表解析**：从订单角度分析，订单消费金额多数在0～400，而每笔订单购买数量大多在0～40，而且订单购买数量极值极少，基本与上方用户消费角度分析趋势一致。
 
@@ -717,7 +717,7 @@ data.plot.scatter(x = '订单金额',y = '订单数',figsize = (20,10))
 group_user['订单金额'].plot.hist(bins = 20,figsize = (16,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_25_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_25_1.png)
 
 **图表解析**：用户大部分消费能力不高，基本上绝大部分用户处于很低的消费档次，图中基本看不到高消费用户。
 
@@ -732,7 +732,7 @@ group_user['订单金额'].plot.hist(bins = 20,figsize = (16,10))
 group_user.query('订单数 < 92')['订单数'].hist(bins = 40,figsize = (16,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_27_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_27_1.png)
 
 **图表解析**：排除部分极值干扰，可看出大部分用户购买CD的数量都在3张以内，购买大数量的用户属极少数。
 
@@ -748,7 +748,7 @@ user_cumsum = group_user.sort_values('订单金额').apply(lambda x:x.cumsum() /
 user_cumsum.reset_index()['订单金额'].plot(figsize = (16,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_29_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_29_1.png)
 
 **图表解析**：50%的用户仅贡献了15%的消费额，而排名前5000的用户就贡献了60%的消费金额。
 
@@ -774,7 +774,7 @@ orderdt_min = data.groupby('用户ID').min()['购买日期']
 orderdt_min.value_counts().plot(figsize = (16,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_33_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_33_1.png)
 
 **图表解析：**用户第一次购买基本集中在前三个月，而在2月份中下旬有一次较大的波动
 
@@ -790,7 +790,7 @@ orderdt_max = data.groupby('用户ID').max()['购买日期']
 orderdt_max.value_counts().plot(figsize = (16,10))
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_35_1.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_35_1.png)
 
 **图表解析：**
 
@@ -1367,7 +1367,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_45_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_45_0.png)
 
 </br>
 
@@ -1384,7 +1384,7 @@ plt.ylabel('Recency')
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_46_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_46_0.png)
 
 **图表解析**：可以看出，大部分用户为重要保持客户，原因可能是存在极值，也说明了RFM模型的划分应该依照业务的实际情况来进行划分层级。
 
@@ -2139,7 +2139,7 @@ purchase_states_m.plot.area(figsize = (16,8))
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_53_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_53_0.png)
 
 **图表解析**：
 
@@ -2167,7 +2167,7 @@ plt.legend()
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_55_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_55_0.png)
 
 **图表解析**：
 
@@ -2231,7 +2231,7 @@ order_diff.describe()
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_59_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_59_0.png)
 
 **图表解析**：
 
@@ -2327,7 +2327,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_62_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_62_0.png)
 
 </br>
 
@@ -2383,7 +2383,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_64_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_64_0.png)
 
 **图表解析**：通过对比可知，去除周期为0的用户后，图像呈双峰结构。
 
@@ -2776,7 +2776,7 @@ purchare_r.head()
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_70_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_70_0.png)
 
 **图表解析**：复购率稳定在20%~22%，而前三个月复购率低，可能是有大量新用户所导致。
 
@@ -3012,7 +3012,7 @@ plt.legend()
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_75_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_75_0.png)
 
 **图表分析**：
 
@@ -3576,7 +3576,7 @@ plt.title('各时间区间的用户留存率')
 plt.show()
 ```
 
-![](https://gitee.com/minzvv/blog_images/raw/master/cdnow/output_83_0.png)
+![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/cdnow/output_83_0.png)
 
 
 
