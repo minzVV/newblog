@@ -6,7 +6,7 @@ toc: true
 tags:
     - 数据分析项目
 categories:
-    - [数据分析,项目实操]
+    - [数据分析,案例分析]
 ---
 
 > 摘要
@@ -14,7 +14,7 @@ categories:
 <!-- more -->
 
 
-## 项目描述
+### 项目描述
 
 **项目名称**：大型商场销售额分析及数据可视化
 
@@ -76,7 +76,7 @@ test['Item_Outlet_Sales'] = 0
 data = pd.concat([test,train],sort=False)     #数据量并非很大，合并使用全部数据进行处理并建模
 ```
 
-### 销售额分析
+### 数据分布
 
 
 ```python
