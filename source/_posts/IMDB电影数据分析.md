@@ -106,7 +106,7 @@ credits = pd.read_csv('tmdb_5000_credits.csv',sep = ',')
 credits.head()
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-1.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-1.png)
 
 ### **数据整理**
 
@@ -125,7 +125,7 @@ data = pd.concat([movies,credits],axis = 1)
 data.head()
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-2.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-2.png)
 
 </br>
 
@@ -166,7 +166,7 @@ data.apply(lambda x:sum(x.isnull()))
 data[data.isnull().values==True]
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-3.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-3.png)
 
 
 ```python
@@ -275,7 +275,7 @@ plt.title('每年电影类型数量')
     Text(0.5, 1.0, '每年电影类型数量')
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-4.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-4.png)
 
 **图表解析**：从图中可以看出在1916年到2017年之间，数据虽然存在波动但是总体上不同的电影类型数量都在不断扩大，其中戏剧类，喜剧类和惊悚类的增长较为迅速。这3类电影类型在市场占着主导地位。同时也可以预测这3类类型的电影人仍然会占主导地位。
 
@@ -302,7 +302,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-5.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-5.png)
 
 **图表解析**：从图中可以看出戏剧类，喜剧类，惊悚类，动作类和爱情类的占比较大，数量较多，说明这5种类型在1916年到2017年受众较广。
 
@@ -321,7 +321,7 @@ df['crew'] = df['crew'].apply(director)
 df.head()
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjdx-6.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjdx-6.png)
 
 
 ```python
@@ -332,7 +332,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-7.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-7.png)
 
 **图表解析**：从图中可以看出Steven Spielberg和Woody Allen是最高产的两位电影导演。
 
@@ -378,7 +378,7 @@ plt.title('电影产出国分布图',fontsize=20)
     Text(0.5, 1.0, '电影产出国分布图')
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-8.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-8.png)
 
 **图表解析**：从图中可以看出超过一半的电影产出国为美国，其次是英国占比约为11%，紧跟的是德国法国。美国无疑是电影业制造大亨，是世界第一的电影强国。
 
@@ -402,7 +402,7 @@ for x,y in zip(revenue.values,range(len(revenue.index))):
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-9.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-9.png)
 
 </br>
 
@@ -416,11 +416,11 @@ plt.figure(figsize = (12,8))
 sns.heatmap(corr,vmin = 0,vmax = 1,cmap = 'Set3')
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-10.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-10.png)
 
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-11.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-11.png)
 
 
 
@@ -439,7 +439,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-12.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-12.png)
 
 
 
@@ -457,7 +457,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-13.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-13.png)
 
 **图表解析**：从图中以及计算出的相关系数可以得知电影预算和票房存在正线性相关关系，电影评分与票房也存在着正线性相关关系，但前者的相关性较大，有0.73，后者较小只有0.2。
 
@@ -474,7 +474,7 @@ part3_df['original'] = part3_df['keywords'].str.contains('based on novel').apply
 part3_df.head()
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-14.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-14.png)
 
 
 ```python
@@ -492,7 +492,7 @@ plt.title('原创电影与改编电影数量分布',fontsize = 20)
 
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-15.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-15.png)
 
 ```python
 org_ada_all.plot(kind = 'barh',figsize = (15,8))
@@ -504,7 +504,7 @@ plt.title('原创电影与改编电影数量对比',fontsize = 20)
     Text(0.5, 1.0, '原创电影与改编电影数量对比')
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-16.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-16.png)
 
 **图表解析**：从图中可以看出占96%的电影为原创电影，原创电影的数量远远大于改编电影，说明原创电影比较受市场的追捧。
 
@@ -521,7 +521,7 @@ plt.title('改编电影与原创电影评分平均分对比',fontsize=20)
 plt.show()
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-16-2.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-16-2.png)
 
 **图表解析**：改编电影的平均分为6.60，原创电影的平均分为6.07，两者相差不大，改编电影略高，说明改编电影的质量较高，口碑较好。
 
@@ -532,7 +532,7 @@ org_ada_df = part3_df.groupby('release_year')['original','adaptation'].sum(axis 
 org_ada_df.tail()
 ```
 
- ![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-17.png)
+ ![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-17.png)
 
 
 
@@ -549,7 +549,7 @@ plt.title('原创电影与改编电影数量趋势',fontsize = 20)
     Text(0.5, 1.0, '原创电影与改编电影数量趋势')
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-18.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-18.png)
 
 **图表解析**：由图可看出，原创电影一直在不断上涨，且在1990年至2000年后出现了指数型增长，而改编电影的数量一直变化不大
 
@@ -578,7 +578,7 @@ plt.title('Universal Pictures和Paramount Picture公司产出对比图',fontsize
     Text(0.5, 1.0, 'Universal Pictures和Paramount Picture公司产出对比图')
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-19.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-19.png)
 
 **图表解析**：可以看出，universal picture比paramout picture 产出占比略大
 
@@ -599,7 +599,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-20.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-20.png)
 
 **图表解析**：可以看出，虽然universal picture比paramout picture 票房略高，但相差不大。
 
@@ -620,7 +620,7 @@ plt.grid(True)
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/dysjfx/dysjfx-21.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/dysjfx/dysjfx-21.png)
 
 **图表解析**：可以看出1960年后票房开始增长，2000年派拉蒙的票房成绩大部分时间都比环球要好，2000年环球的票房成绩大部分比派拉蒙要好，且环球的最高票房要高于派拉蒙。总体来说两家电影公司的票房相差的不是很大，都有波动。
 

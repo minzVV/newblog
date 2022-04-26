@@ -89,7 +89,7 @@ sns.distplot(data['Item_Outlet_Sales'])
     <matplotlib.axes._subplots.AxesSubplot at 0x1a2431c860>
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-1.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-1.png)
 
 ```python
 # 查看偏度系数、峰度系数
@@ -115,7 +115,7 @@ print('峰度系数Kurtsis: %f' % data['Item_Outlet_Sales'].kurt())
 train.describe()
 ```
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-2.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-2.png)
 
 **图表解析**：
 
@@ -400,7 +400,7 @@ sns.countplot(x = "Outlet_Size", data = data)
     <matplotlib.axes._subplots.AxesSubplot at 0x1a25636cf8>
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-3.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-3.png)
 
 **图表解析**：可看出大部分都属于中小型商店，大型商店占比较小
 
@@ -416,7 +416,7 @@ sns.barplot(x = "Item_Fat_Content", y = "Item_Weight" , data = data)
     <matplotlib.axes._subplots.AxesSubplot at 0x1a25b12da0>
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-4.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-4.png)
 
 **图表解析**：可以看出商品是否低脂与产品重量没什么多大联系
 
@@ -433,7 +433,7 @@ sns.barplot(ax=ax,x = "Outlet_Identifier", y = "Item_Outlet_Sales" , data = data
     <matplotlib.axes._subplots.AxesSubplot at 0x1a25ae9550>
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-5.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-5.png)
 
 **图表解析**：OUT017与OUT019的销售额最少，经营情况很差；而OUT027的销售额最高，其余商店的销售额相差无几
 
@@ -454,7 +454,7 @@ for col in requiredColumns:
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-6.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-6.png)
 
 **图表解析**：明显可以看出，Seafood的销售金额相比其他会高出不少，而Fruits and Vegetables的销售金额曲线最平滑，金额也偏低。
 
@@ -475,7 +475,7 @@ for col in requiredColumns1:
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-7.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-7.png)
 
 **图表解析**：与上面分析结果一致，销售额最差的是OUT017与OUT019，经营情况最差；而销售额最高的是OUT027，其余商店销售额曲线相差不大
 
@@ -489,7 +489,7 @@ plt.xticks(rotation = 360)
 
     (array([0, 1, 2, 3, 4, 5, 6, 7, 8]), <a list of 9 Text xticklabel objects>)
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-8.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-8.png)
 
 **图表解析**：可以看出除1998年，其他商店年份的销售额都相差不大
 
@@ -508,7 +508,7 @@ plt.xticks(rotation = 360)
     (array([0, 1, 2, 3, 4, 5, 6, 7, 8]), <a list of 9 Text xticklabel objects>)
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-9.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-9.png)
 
 ```python
 plt.figure(figsize = (12,6))
@@ -522,7 +522,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-10.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-10.png)
 
 **图表解析**：商店年龄在21年的商店销售额最少
 
@@ -535,7 +535,7 @@ plt.show()
 data.pivot_table(values='Item_Outlet_Sales',index='Outlet_Type')
 ```
 
- ![bigmart-11](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-11.png)
+ ![bigmart-11](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-11.png)
 
 **图表解析**：可以看出销售额存在差异，所以我们保留两个特征
 
@@ -564,7 +564,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-12.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-12.png)
 
 **图表解析**：Drink类商品的销售额相比另外两种还是要差上不少，而商品是否低脂与销售额基本上关系不大，与上面的分析结果一致
 
@@ -595,7 +595,7 @@ plt.show()
 ```
 
 
-![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-13.png)
+![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-13.png)
 
 ### 数据类型转换
 
@@ -614,7 +614,7 @@ for c in cols:
 data.head()
 ```
 
-![bigmart-14](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-14.png)
+![bigmart-14](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-14.png)
 
 #### 相关性 - 热力图
 
@@ -633,7 +633,7 @@ plt.show()
 ```
 
 
- ![](https://minzvvblog.oss-cn-shenzhen.aliyuncs.com/bigmart/bigmart-15.png)
+ ![](https://cdn.jsdelivr.net/gh/minzvv/blogimg/bigmart/bigmart-15.png)
 
 #### 独热编码
 
